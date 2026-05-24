@@ -19,7 +19,7 @@ YipCommerce Case Study is a compact Laravel 12 e-commerce application built for 
 
 ## Tech Stack
 
-- PHP 8.2+
+- PHP 8.4+
 - Laravel 12
 - SQLite by default for easy local testing
 - Eloquent ORM
@@ -29,7 +29,7 @@ YipCommerce Case Study is a compact Laravel 12 e-commerce application built for 
 
 ## Requirements
 
-- PHP 8.2 or newer
+- PHP 8.4 or newer
 - Composer
 - Node.js and npm
 - SQLite extension for PHP
