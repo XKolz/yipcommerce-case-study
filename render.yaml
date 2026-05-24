@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: yipcommerce-case-study
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /up
+    envVars:
+      - key: APP_NAME
+        value: "YipCommerce Case Study"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        value: https://yipcommerce-case-study.onrender.com
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: info
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_URL
+        fromDatabase:
+          name: yipcommerce-db
+          property: connectionString
+      - key: SESSION_DRIVER
+        value: database
+      - key: SESSION_SECURE_COOKIE
+        value: "true"
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: RUN_MIGRATIONS
+        value: "true"
+      - key: RUN_SEEDERS
+        value: "true"
+
+databases:
+  - name: yipcommerce-db
+    databaseName: yipcommerce
+    user: yipcommerce
+    plan: free

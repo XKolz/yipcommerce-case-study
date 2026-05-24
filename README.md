@@ -162,3 +162,24 @@ Screenshots can be added here before submission:
 - Run `php artisan storage:link`
 - Run `php artisan config:cache route:cache view:cache`
 - Use a queue worker if async jobs are added later
+
+## Render Deployment
+
+This repository includes a `Dockerfile`, `render.yaml`, and Render start script for deploying the Laravel app as a free Render Web Service with PostgreSQL.
+
+1. Push this repository to GitHub.
+2. Generate an app key locally:
+
+```bash
+php artisan key:generate --show
+```
+
+3. In Render, create a new Blueprint from this repository. Render will read `render.yaml` and create:
+
+- A free Docker web service
+- A free Render Postgres database
+
+4. When Render prompts for `APP_KEY`, paste the generated key from step 2.
+5. After the first deploy, update `APP_URL` in Render if the service URL is different from `https://yipcommerce-case-study.onrender.com`.
+
+Render free web services sleep after inactivity, so the first request after a pause may be slow. Render free Postgres databases also expire after 30 days; use an external free Postgres provider such as Supabase for a longer-lived demo database. Product image uploads use local storage and are not durable on Render's free web service.

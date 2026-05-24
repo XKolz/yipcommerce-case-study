@@ -84,7 +84,7 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            Product::query()->updateOrCreate(
+            Product::query()->firstOrCreate(
                 ['slug' => Str::slug($product['name'])],
                 $product + ['status' => 'active'],
             );
